@@ -17,7 +17,7 @@ public class Inventory
     const int size = 24;
 
     private Organ[] inventoryItems = new Organ[size];
-    private int ammoCount = 0;
+    public int ammoCount = 0;
     public Brain currentBrain;
     public Eyes currentEyes;
     public Lungs currentLungs;

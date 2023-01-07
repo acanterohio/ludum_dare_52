@@ -41,7 +41,7 @@ public class InventoryManager : MonoBehaviour
     void Start()
     {
         UpdateAllSlots();
-        StartCoroutine(TestInventory());
+        // StartCoroutine(TestInventory());
     }
 
     private IEnumerator TestInventory()
@@ -49,6 +49,7 @@ public class InventoryManager : MonoBehaviour
         while (true)
         {
             Inventory.Instance.AddItem(RandomOrgan());
+            Inventory.Instance.AddItem(new NormalAmmo());
             UpdateAllSlots();
             yield return new WaitForSeconds(5f);
         }
