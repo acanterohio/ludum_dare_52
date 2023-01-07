@@ -11,6 +11,12 @@ public class Donor : MonoBehaviour, ISuckable
         new Lungs(),
         new Heart()
     };
+    private DonorController donorController;
+
+    private void Start()
+    {
+        donorController = GetComponent<DonorController>();
+    }
 
     private float suckCooldown = 3f;
     private bool onCooldown = false;
@@ -25,6 +31,7 @@ public class Donor : MonoBehaviour, ISuckable
                 int index = (int)Random.Range(0f, organs.Count);
                 Item item = organs[index];
                 organs.RemoveAt(index);
+                donorController.updateAngerLevel(4 - organs.Count);
                 return item;
             }
             
