@@ -20,11 +20,15 @@ public class SuckManager : MonoBehaviour
                     Item sucked = suckable.suck();
                     if (sucked is NormalAmmo ammo)
                     {
-                        print("POW POW NORMAL AMMO");
+                        print("Found some ammo!");
                     }
-                    if (sucked is null)
+                    if (sucked is Organ)
                     {
-                        print("EMPTYYYYY");
+                        print("Congrats you got: " + sucked.GetType().Name);
+                    }
+                    if (sucked is Empty)
+                    {
+                        print("It's all out :(");
                     }
                 }
             }
