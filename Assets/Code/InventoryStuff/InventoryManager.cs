@@ -31,9 +31,13 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    [SerializeField] private GameObject inventoryParent;
     [SerializeField] private Transform rowsParent;
     [SerializeField] private List<NamedSprite> sprites;
     [SerializeField] private List<InventorySlot> organSlots;
+    [SerializeField] private RectTransform currentOrgans;
+    [SerializeField] private Vector3 sidebarPos, sidebarInvPos;
+    [SerializeField] private Vector3 sidebarScale, sidebarInvScale;
     public Camera cam;
     public Vector2 mousePosition;
     private bool showingInventory;
@@ -41,6 +45,8 @@ public class InventoryManager : MonoBehaviour
     void Start()
     {
         UpdateAllSlots();
+        currentOrgans.anchoredPosition = sidebarPos;
+        currentOrgans.localScale = sidebarScale;
         // StartCoroutine(TestInventory());
     }
 
@@ -71,13 +77,21 @@ public class InventoryManager : MonoBehaviour
     }
 
 
-    public void ToggleInventory()
+    public void ToggleInventory(InputAction.CallbackContext context)
     {
         showingInventory = !showingInventory;
         if (showingInventory)
         {
+            currentOrgans.anchoredPosition = sidebarInvPos;
+            currentOrgans.localScale = sidebarInvScale;
             UpdateAllSlots();
         }
+        else
+        {
+            currentOrgans.anchoredPosition = sidebarPos;
+            currentOrgans.localScale = sidebarScale;
+        }
+        inventoryParent.SetActive(showingInventory);
     }
 
 
