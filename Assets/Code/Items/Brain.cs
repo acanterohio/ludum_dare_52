@@ -4,4 +4,8 @@ using UnityEngine;
 
 public class Brain : Organ
 {
+    public Brain() : base()
+    {
+
+    }
 }

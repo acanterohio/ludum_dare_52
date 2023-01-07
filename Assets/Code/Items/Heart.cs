@@ -4,4 +4,8 @@ using UnityEngine;
 
 public class Heart : Organ
 {
+    public Heart() : base()
+    {
+
+    }
 }

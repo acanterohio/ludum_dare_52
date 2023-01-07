@@ -13,9 +13,11 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     protected bool itemExists;
     [SerializeField] protected GameObject highlight;
     [SerializeField] protected Image itemImage;
+    [SerializeField] protected GameObject qualityBar;
+    [SerializeField] protected Image qualityFill;
     protected InventoryManager manager;
 
-    void Start()
+    void Awake()
     {
         manager = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
         OnStart();
@@ -38,9 +40,15 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     protected virtual void UpdateSlotWithItem(Item item)
     {
+        if (manager == null)
+        {
+            manager = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
+            OnStart();
+        }
         if (item == null)
         {
             itemImage.gameObject.SetActive(false);
+            qualityBar.SetActive(false);
             itemExists = false;
         }
         else
@@ -54,6 +62,15 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             {
                 itemImage.sprite = sprite;
                 itemImage.gameObject.SetActive(true);
+            }
+            if (item is Organ organ)
+            {
+                qualityFill.fillAmount = organ.Quality;
+                qualityBar.SetActive(true);
+            }
+            else
+            {
+                qualityBar.SetActive(false);
             }
             itemExists = true;
         }

@@ -22,7 +22,7 @@ public class SuckManager : MonoBehaviour
                     {
                         print("Found some ammo!");
                     }
-                    if (sucked is Organ)
+                    if (sucked is Organ organ)
                     {
                         print("Congrats you got: " + sucked.GetType().Name);
                     }
@@ -30,6 +30,7 @@ public class SuckManager : MonoBehaviour
                     {
                         print("It's all out :(");
                     }
+                    Inventory.Instance.AddItem(sucked);
                 }
             }
         }

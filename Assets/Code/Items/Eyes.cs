@@ -4,4 +4,8 @@ using UnityEngine;
 
 public class Eyes : Organ
 {
+    public Eyes() : base()
+    {
+
+    }
 }

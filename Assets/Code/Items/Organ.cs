@@ -4,5 +4,18 @@ using UnityEngine;
 
 public abstract class Organ : Item
 {
+    private float quality;
+    public float Quality
+    {
+        get
+        {
+            return quality;
+        }
+    }
 
+    public Organ()
+    {
+        quality = Random.value;
+    }
+    
 }

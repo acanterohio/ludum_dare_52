@@ -47,7 +47,7 @@ public class InventoryManager : MonoBehaviour
         UpdateAllSlots();
         currentOrgans.anchoredPosition = sidebarPos;
         currentOrgans.localScale = sidebarScale;
-        // StartCoroutine(TestInventory());
+        StartCoroutine(TestInventory());
     }
 
     private IEnumerator TestInventory()
