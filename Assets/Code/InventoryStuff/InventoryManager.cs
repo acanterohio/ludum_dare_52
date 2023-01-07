@@ -1,0 +1,169 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
+
+public class InventoryManager : MonoBehaviour
+{
+    [System.Serializable]
+    private class NamedSprite
+    {
+        public string name;
+        public Sprite sprite;
+
+        public static bool Contains(List<NamedSprite> list, string name)
+        {
+            foreach (NamedSprite s in list)
+            {
+                if (s.name == name) return true;
+            }
+            return false;
+        }
+
+        public static Sprite GetSprite(List<NamedSprite> list, string name)
+        {
+            foreach (NamedSprite s in list)
+            {
+                if (s.name == name) return s.sprite;
+            }
+            return null;
+        }
+    }
+
+    [SerializeField] private Transform rowsParent;
+    [SerializeField] private List<NamedSprite> sprites;
+    [SerializeField] private List<InventorySlot> organSlots;
+    public Camera cam;
+    public Vector2 mousePosition;
+    private bool showingInventory;
+
+    void Start()
+    {
+        UpdateAllSlots();
+        StartCoroutine(TestInventory());
+    }
+
+    private IEnumerator TestInventory()
+    {
+        while (true)
+        {
+            Inventory.Instance.AddItem(RandomOrgan());
+            UpdateAllSlots();
+            yield return new WaitForSeconds(5f);
+        }
+    }
+
+    private Organ RandomOrgan()
+    {
+        int rand = Random.Range(0, 4);
+        if (rand == 0) return new Brain();
+        if (rand == 1) return new Eyes();
+        if (rand == 2) return new Lungs();
+        return new Heart();
+    }
+
+
+    public void GetMousePosition(InputAction.CallbackContext context)
+    {
+        mousePosition = context.ReadValue<Vector2>();
+    }
+
+
+    public void ToggleInventory()
+    {
+        showingInventory = !showingInventory;
+        if (showingInventory)
+        {
+            UpdateAllSlots();
+        }
+    }
+
+
+    public Sprite GetSprite(System.Type type)
+    {
+        string name = type.Name;
+        Sprite sprite = NamedSprite.GetSprite(sprites, name);
+        if (sprite == null) Debug.LogError("Type " + name + " does not exist in the InventoryManager");
+        return sprite;
+    }
+
+    public void DropItem(int slot)
+    {
+        foreach (Transform row in rowsParent)
+        {
+            foreach (Transform itemSlot in row)
+            {
+                itemSlot.GetComponent<InventorySlot>().ItemDropped(slot);
+            }
+        }
+        foreach (InventorySlot organSlot in organSlots)
+        {
+            organSlot.ItemDropped(slot);
+        }
+        UpdateAllSlots();
+    }
+
+    public void DropBrain()
+    {
+        foreach (Transform row in rowsParent)
+        {
+            foreach (Transform itemSlot in row)
+            {
+                itemSlot.GetComponent<InventorySlot>().BrainDropped();
+            }
+        }
+        UpdateAllSlots();
+    }
+
+    public void DropEyes()
+    {
+        foreach (Transform row in rowsParent)
+        {
+            foreach (Transform itemSlot in row)
+            {
+                itemSlot.GetComponent<InventorySlot>().EyesDropped();
+            }
+        }
+        UpdateAllSlots();
+    }
+
+    public void DropLungs()
+    {
+        foreach (Transform row in rowsParent)
+        {
+            foreach (Transform itemSlot in row)
+            {
+                itemSlot.GetComponent<InventorySlot>().LungsDropped();
+            }
+        }
+        UpdateAllSlots();
+    }
+
+    public void DropHeart()
+    {
+        foreach (Transform row in rowsParent)
+        {
+            foreach (Transform itemSlot in row)
+            {
+                itemSlot.GetComponent<InventorySlot>().HeartDropped();
+            }
+        }
+        UpdateAllSlots();
+    }
+
+    private void UpdateAllSlots()
+    {
+        foreach (Transform row in rowsParent)
+        {
+            foreach (Transform itemSlot in row)
+            {
+                itemSlot.GetComponent<InventorySlot>().UpdateSlot();
+            }
+        }
+        foreach (InventorySlot organSlot in organSlots)
+        {
+            organSlot.UpdateSlot();
+        }
+    }
+}
