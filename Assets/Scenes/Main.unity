@@ -3851,6 +3851,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerParent
       objectReference: {fileID: 0}
+    - target: {fileID: 6908702044390607441, guid: 6dcf083ee15124592ab9a861a6725eb4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7467258274370680484, guid: 6dcf083ee15124592ab9a861a6725eb4, type: 3}
       propertyPath: lookSpeed
       value: 0.15
@@ -12036,7 +12040,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   donorPrefab: {fileID: 783350103115111348, guid: 14d23169f983d4367b3f84ee2a30aeb5, type: 3}
-  spawnPrefab: {fileID: 1923825746820164844, guid: 2d88a59f14353894eabe2754e9187ae4, type: 3}
 --- !u!4 &1021409954
 Transform:
   m_ObjectHideFlags: 0
@@ -20981,7 +20984,7 @@ GameObject:
   - component: {fileID: 1844077636}
   - component: {fileID: 1844077635}
   - component: {fileID: 1844077638}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}

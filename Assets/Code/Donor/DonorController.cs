@@ -24,7 +24,6 @@ public class DonorController : MonoBehaviour
         if (angerLevel == 5)
         {
             Destroy(GetComponent<NavMeshAgent>());
-            print("Dead");
             donorTransform.rotation = Quaternion.Euler(90, 0, 0);
             angerLevel = 6;
         }
