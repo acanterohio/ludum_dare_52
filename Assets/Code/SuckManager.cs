@@ -17,7 +17,7 @@ public class SuckManager : MonoBehaviour
                 ISuckable suckable =  hitColliders[i].gameObject.GetComponent<ISuckable>();
                 if (suckable != null )
                 {
-                    Item sucked = suckable.suck();
+                    Item sucked = suckable.suck(transform);
                     if (sucked is NormalAmmo ammo)
                     {
                         print("Found some ammo!");
