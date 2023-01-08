@@ -48,7 +48,7 @@ public class SpawningManager : MonoBehaviour
                 if (!Physics.CheckBox(location, spawnCheck, Quaternion.identity, mask))
                 {
                     GameObject donor = Instantiate(donorPrefab, location, Quaternion.identity, transform.GetChild(1));
-                    donor.GetComponent<DonorController>().setDestinations(spawnLocations);
+                    donor.GetComponentInChildren<DonorController>().setDestinations(spawnLocations);
                     numberSpawned++;
                 }
             }

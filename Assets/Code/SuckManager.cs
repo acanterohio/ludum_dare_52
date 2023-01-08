@@ -31,6 +31,7 @@ public class SuckManager : MonoBehaviour
                         print("It's all out :(");
                     }
                     Inventory.Instance.AddItem(sucked);
+                    GameObject.Find("InventoryManager").GetComponent<InventoryManager>().UpdateAllSlots();
                 }
             }
         }

@@ -49,7 +49,7 @@ public class InventoryManager : MonoBehaviour
         UpdateAllSlots();
         currentOrgans.anchoredPosition = sidebarPos;
         currentOrgans.localScale = sidebarScale;
-        StartCoroutine(TestInventory());
+        // StartCoroutine(TestInventory());
     }
 
     private IEnumerator TestInventory()
@@ -174,7 +174,7 @@ public class InventoryManager : MonoBehaviour
         UpdateAllSlots();
     }
 
-    private void UpdateAllSlots()
+    public void UpdateAllSlots()
     {
         foreach (Transform row in rowsParent)
         {
