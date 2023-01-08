@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class Donor : MonoBehaviour, ISuckable
 {
-    private List<Item> organs = new List<Item>()
-    {
-        new Brain(),
-        new Eyes(),
-        new Lungs(),
-        new Heart()
-    };
+    private List<Item> organs;
     private DonorController donorController;
 
     private void Start()
     {
+        organs = new List<Item>()
+        {
+            new Brain(),
+            new Eyes(),
+            new Lungs(),
+            new Heart()
+        };
         donorController = GetComponent<DonorController>();
     }
 
