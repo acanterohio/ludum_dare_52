@@ -7,8 +7,10 @@ public class DonorController : MonoBehaviour
 {
     private NavMeshAgent agent;
     private Transform donorTransform;
-    [SerializeField] Transform playerTransform;
+    private Transform playerTransform;
     private int angerLevel = 0;
+
+    private List<Vector3> destinations;
 
     private void Start()
     {
@@ -26,33 +28,56 @@ public class DonorController : MonoBehaviour
             donorTransform.rotation = Quaternion.Euler(90, 0, 0);
             angerLevel = 6;
         }
-        float speed = 0;
+        float speed = 8f;
         switch (angerLevel)
         {
-            
+
             case 0:
-                return;
+                break;
             case 1:
-                speed = 2f;
+                speed = 6f;
                 break;
             case 2:
-                speed = 4f;
+                speed = 8f;
                 break;
             case 3:
-                speed = 7f;
+                speed = 10f;
                 break;
             case 4:
-                speed = 10f;
+                speed = 12f;
                 break;
             case 6: //fallen
                 return;
         }
         agent.speed = speed;
-        agent.SetDestination(playerTransform.position);
+        if (destinations != null && angerLevel == 0 && agent.velocity.sqrMagnitude < .1f)
+        {
+            int random = (int) Random.Range(0, destinations.Count);
+            agent.SetDestination(destinations[random]);
+        }
+        else if (playerTransform != null)
+        {
+            
+            agent.SetDestination(playerTransform.position);
+        }
+
     }
 
     public void updateAngerLevel(int anger)
     {
-        angerLevel= anger;
+        angerLevel = anger;
+    }
+    public void setTarget(Transform transform)
+    {
+        if (angerLevel == 0)
+        {
+            angerLevel = 1;
+        }
+        playerTransform = transform;
+    }
+
+    public void setDestinations(List<Vector3> destinations)
+    {
+        this.destinations = destinations;
     }
 }

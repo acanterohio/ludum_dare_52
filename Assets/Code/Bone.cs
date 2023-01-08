@@ -6,6 +6,7 @@ public class Bone : MonoBehaviour
 {
     private float despawnTime = 5f;
     private float damage = 10f;
+    private Transform playerTransform;
     void Start()
     {
         StartCoroutine(DespawnTimer());
@@ -21,8 +22,13 @@ public class Bone : MonoBehaviour
         IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
         if (damageable != null )
         {
-            damageable.damage(damage);
+            damageable.damage(damage, playerTransform);
             Destroy(gameObject);
         }
+    }
+
+    public void setPlayer(Transform playerTransform)
+    {
+        this.playerTransform = playerTransform;
     }
 }

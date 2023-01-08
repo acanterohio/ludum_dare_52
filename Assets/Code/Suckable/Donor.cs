@@ -30,13 +30,14 @@ public class Donor : MonoBehaviour, ISuckable
             Destroy(gameObject);
         }
     }
-    public Item suck()
+    public Item suck(Transform transform)
     {
         if (!isDead) {
             if (!onCooldown)
             {
                 onCooldown = true;
                 StartCoroutine(StartCooldown());
+                donorController.setTarget(transform);
                 if (organs.Count > 0)
                 {
                     int index = (int)Random.Range(0f, organs.Count);

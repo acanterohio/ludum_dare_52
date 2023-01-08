@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3927025563220023413}
   - component: {fileID: 3927025563220023412}
   - component: {fileID: 3927025563220023415}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 3927025564083796823}
   - component: {fileID: -1196952814237691598}
   - component: {fileID: -7705847795146854383}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3927025564176631008}
   - component: {fileID: 3927025564176631009}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ThirdPersonCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,7 +272,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3927025564646429932}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LookTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}

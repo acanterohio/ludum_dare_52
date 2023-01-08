@@ -6,5 +6,5 @@ using UnityEngine;
 
 public interface ISuckable
 {
-    Item suck();
+    Item suck(Transform transform);
 }

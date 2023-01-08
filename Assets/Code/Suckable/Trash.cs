@@ -7,7 +7,7 @@ public class Trash : MonoBehaviour, ISuckable
     private int itemsLeft = 3;
     private float suckCooldown = .3f;
     private bool onCooldown = false;
-    public Item suck()
+    public Item suck(Transform transform)
     {
         if (!onCooldown)
         {
