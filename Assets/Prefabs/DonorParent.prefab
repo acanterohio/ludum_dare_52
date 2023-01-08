@@ -175,6 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 0
+  forwardDistance: 0.5
 --- !u!1 &2189607683905770597
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,6 +408,7 @@ MonoBehaviour:
   startOnAwake: 1
   goForever: 1
   cycles: 1
+  onlyIfMoving: 1
   onFinish:
     m_PersistentCalls:
       m_Calls: []
@@ -463,6 +465,7 @@ MonoBehaviour:
   startOnAwake: 1
   goForever: 1
   cycles: 1
+  onlyIfMoving: 1
   onFinish:
     m_PersistentCalls:
       m_Calls: []
@@ -695,6 +698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 0
+  forwardDistance: 0.5
 --- !u!1 &6467992530423278911
 GameObject:
   m_ObjectHideFlags: 0

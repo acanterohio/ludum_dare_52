@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.AI;
 
 public enum AnimateMode
 {
@@ -17,12 +18,18 @@ public class AnimateWithTransforms : MonoBehaviour
     [SerializeField] private bool startOnAwake = true;
     [SerializeField] private bool goForever = true;
     [SerializeField] private int cycles = 1;
+    [SerializeField] private bool onlyIfMoving = false;
     [SerializeField] private UnityEvent onFinish;
     private int currentFrame = 0, direction = 1;
 
     void Awake()
     {
         if (startOnAwake) StartAnimation();
+    }
+
+    public void SetTargets(List<Transform> newTargets)
+    {
+        targets = newTargets;
     }
 
     public void StartAnimation()
@@ -65,16 +72,37 @@ public class AnimateWithTransforms : MonoBehaviour
 
     private IEnumerator MoveToNextTarget()
     {
+        transform.position = targets[currentFrame].position;
+        transform.rotation = targets[currentFrame].rotation;
         float t = 0;
         while (t < timeBetweenTargets)
         {
-            transform.position = Vector3.Lerp(targets[currentFrame].position, targets[currentFrame + direction].position, t / timeBetweenTargets);
-            transform.rotation = Quaternion.Lerp(targets[currentFrame].rotation, targets[currentFrame + direction].rotation, t / timeBetweenTargets);
-            t += Time.deltaTime;
+            if (!onlyIfMoving || Moving())
+            {
+                transform.position = Vector3.Lerp(targets[currentFrame].position, targets[currentFrame + direction].position, t / timeBetweenTargets);
+                transform.rotation = Quaternion.Lerp(targets[currentFrame].rotation, targets[currentFrame + direction].rotation, t / timeBetweenTargets);
+                t += Time.deltaTime;
+            }
             yield return null;
         }
         transform.position = targets[currentFrame + direction].position;
         transform.rotation = targets[currentFrame + direction].rotation;
+    }
+
+    private bool Moving()
+    {
+        bool moving = true;
+        Rigidbody rb = GetComponentInParent<Rigidbody>();
+        NavMeshAgent agent = GetComponentInParent<NavMeshAgent>();
+        if (agent != null && agent.velocity.magnitude == 0)
+        {
+            moving = false;
+        }
+        else if (rb != null && rb.velocity.magnitude == 0)
+        {
+            moving = false;
+        }
+        return moving;
     }
 
 }
