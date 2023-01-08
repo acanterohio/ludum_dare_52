@@ -108,7 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5686860196826878834}
   - component: {fileID: 4362886256544094334}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeftFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6757518999252363886}
   - component: {fileID: 140337550660273154}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RightFootTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2528382090679313547}
   - component: {fileID: 7286005332640230219}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeftFootTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,7 +282,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7900208939321837736}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4508001920784260397}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 531752187631340881}
   - component: {fileID: 3879084048249595969}
   - component: {fileID: 3705434987952831812}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,7 +431,7 @@ GameObject:
   m_Component:
   - component: {fileID: 812589721066926165}
   - component: {fileID: 6569244111136847887}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RightFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,9 +515,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5594449061582579651}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerParent
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -550,7 +550,7 @@ GameObject:
   - component: {fileID: 2359297598654473648}
   - component: {fileID: 7173912115105761236}
   - component: {fileID: 718129656482344309}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
