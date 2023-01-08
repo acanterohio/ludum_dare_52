@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class Phone : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private bool hovering;
+    [SerializeField] private TextMeshProUGUI phoneText, cornerText;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -21,7 +23,15 @@ public class Phone : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         if (hovering)
         {
-            Inventory.Instance.RemoveItem(slot);
+            Inventory.Instance.SellItem(slot);
+            UpdateCashText();
         }
+    }
+
+    private void UpdateCashText()
+    {
+        string text = "$" + Mathf.Round(Inventory.Instance.Cash * 100) / 100f;
+        phoneText.text = text;
+        cornerText.text = text;
     }
 }

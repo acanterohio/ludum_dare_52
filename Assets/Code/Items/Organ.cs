@@ -12,6 +12,14 @@ public abstract class Organ : Item
             return quality;
         }
     }
+    private float originalValue = 100;
+    public float Value
+    {
+        get
+        {
+            return originalValue * quality * quality;
+        }
+    }
 
     public Organ()
     {

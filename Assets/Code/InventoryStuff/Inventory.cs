@@ -22,6 +22,14 @@ public class Inventory
     public Eyes currentEyes;
     public Lungs currentLungs;
     public Heart currentHeart;
+    private float cash = 0;
+    public float Cash
+    {
+        get
+        {
+            return cash;
+        }
+    }
 
     private Inventory() {}
 
@@ -71,6 +79,12 @@ public class Inventory
 
     public void RemoveItem(int slot)
     {
+        inventoryItems[slot] = null;
+    }
+
+    public void SellItem(int slot)
+    {
+        cash += inventoryItems[slot].Value;
         inventoryItems[slot] = null;
     }
 

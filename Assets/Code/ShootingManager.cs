@@ -17,10 +17,14 @@ public class ShootingManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            GameObject bone = Instantiate(bonePrefab, playerTransform.position + playerTransform.forward * 1, Quaternion.identity, boneParentTransform);
-            Bone boneScript = bone.GetComponent<Bone>();
-            boneScript.setPlayer(transform);
-            bone.GetComponent<Rigidbody>().velocity = playerTransform.forward * boneSpeed;
+            if (Inventory.Instance.ammoCount > 0)
+            {
+                Inventory.Instance.ammoCount--;
+                GameObject bone = Instantiate(bonePrefab, playerTransform.position + playerTransform.forward * 1, Quaternion.identity, boneParentTransform);
+                Bone boneScript = bone.GetComponent<Bone>();
+                boneScript.setPlayer(transform);
+                bone.GetComponent<Rigidbody>().velocity = playerTransform.forward * boneSpeed;
+            }
         }
     }
 }
