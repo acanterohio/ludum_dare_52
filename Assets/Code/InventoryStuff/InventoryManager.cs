@@ -38,6 +38,8 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private RectTransform currentOrgans;
     [SerializeField] private Vector3 sidebarPos, sidebarInvPos;
     [SerializeField] private Vector3 sidebarScale, sidebarInvScale;
+    [SerializeField] private Phone phone;
+    [SerializeField] private GameObject phoneParent;
     public Camera cam;
     public Vector2 mousePosition;
     private bool showingInventory;
@@ -82,14 +84,18 @@ public class InventoryManager : MonoBehaviour
         showingInventory = !showingInventory;
         if (showingInventory)
         {
+            Cursor.lockState = CursorLockMode.None;
             currentOrgans.anchoredPosition = sidebarInvPos;
             currentOrgans.localScale = sidebarInvScale;
+            phoneParent.SetActive(true);
             UpdateAllSlots();
         }
         else
         {
+            Cursor.lockState = CursorLockMode.Locked;
             currentOrgans.anchoredPosition = sidebarPos;
             currentOrgans.localScale = sidebarScale;
+            phoneParent.SetActive(false);
         }
         inventoryParent.SetActive(showingInventory);
     }
@@ -116,6 +122,7 @@ public class InventoryManager : MonoBehaviour
         {
             organSlot.ItemDropped(slot);
         }
+        phone.ItemDropped(slot);
         UpdateAllSlots();
     }
 
