@@ -20,8 +20,8 @@ public class GroundPoint : MonoBehaviour
             Vector3 point;
             Vector3 origin = transform.position;
             origin.y = originalHeight;
-            
-            if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit, maxDistance, 6))
+
+            if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit, maxDistance, 7))
             {
                 point = hit.point;
             }
