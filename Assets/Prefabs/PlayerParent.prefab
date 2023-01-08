@@ -149,7 +149,7 @@ MonoBehaviour:
   groundedFeet:
   - {fileID: 6569244111136847887}
   groundedDistance: 0.2
-  stepTime: 0.15
+  stepTime: 0.1
   stepCurve:
     serializedVersion: 2
     m_Curve:
@@ -472,7 +472,7 @@ MonoBehaviour:
   groundedFeet:
   - {fileID: 4362886256544094334}
   groundedDistance: 0.2
-  stepTime: 0.15
+  stepTime: 0.1
   stepCurve:
     serializedVersion: 2
     m_Curve:
@@ -632,6 +632,10 @@ PrefabInstance:
     - target: {fileID: 3927025564083796817, guid: 063fa8ba99fee49f3a7d451444e318f7, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927025564083796820, guid: 063fa8ba99fee49f3a7d451444e318f7, type: 3}
+      propertyPath: m_Constraints
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 3927025564083796822, guid: 063fa8ba99fee49f3a7d451444e318f7, type: 3}
       propertyPath: m_RootOrder
