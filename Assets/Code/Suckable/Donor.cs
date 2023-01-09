@@ -6,7 +6,14 @@ public class Donor : MonoBehaviour, ISuckable
 {
     private List<Item> organs;
     private DonorController donorController;
-
+    [SerializeField] GameObject hat;
+    [SerializeField] GameObject stripe;
+    [SerializeField] GameObject brain;
+    [SerializeField] GameObject eyeOne;
+    [SerializeField] GameObject eyeTwo;
+    [SerializeField] GameObject lungOne;
+    [SerializeField] GameObject lungTwo;
+    [SerializeField] GameObject heart;
     private void Start()
     {
         organs = new List<Item>()
@@ -45,6 +52,24 @@ public class Donor : MonoBehaviour, ISuckable
                     Item item = organs[index];
                     organs.RemoveAt(index);
                     donorController.updateAngerLevel(4 - organs.Count);
+                    if (item is Brain)
+                    {
+                        hat.SetActive(false);
+                        brain.SetActive(false);
+                    } else if (item is Eyes)
+                    {
+                        eyeOne.SetActive(false);
+                        eyeTwo.SetActive(false);
+                    } else if (item is Lungs)
+                    {
+                        stripe.SetActive(false);
+                        lungOne.SetActive(false);
+                        lungTwo.SetActive(false);
+                    } else if (item is Heart)
+                    {
+                        stripe.SetActive(false);
+                        heart.SetActive(false);
+                    }
                     return item;
                 }
 
