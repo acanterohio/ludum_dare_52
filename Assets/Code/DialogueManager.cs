@@ -29,6 +29,20 @@ public class DialogueManager : MonoBehaviour
     public void TriggerDialogue(int index)
     {
         if (index != current + 1) return;
+        if (dialogueBox.activeSelf) 
+        {
+            dialogues[index].playAfterPrevious = true;
+        }
+        else
+        {
+            current = index;
+            StartCoroutine(PlayDialogue());
+        }
+    }
+
+    private void TriggerDialogueFromClick(int index)
+    {
+        if (index != current + 1) return;
         current = index;
         StartCoroutine(PlayDialogue());
     }
@@ -49,7 +63,7 @@ public class DialogueManager : MonoBehaviour
         }
         else if (current < dialogues.Count - 1 && dialogues[current + 1].playAfterPrevious)
         {
-            TriggerDialogue(current + 1);
+            TriggerDialogueFromClick(current + 1);
         }
         else
         {

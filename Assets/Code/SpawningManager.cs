@@ -35,6 +35,10 @@ public class SpawningManager : MonoBehaviour
         }
         
         mask = LayerMask.GetMask("Player");
+    }
+
+    public void StartSpawning()
+    {
         StartCoroutine(SpawnCoroutine());
     }
 

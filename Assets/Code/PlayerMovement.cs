@@ -11,11 +11,23 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform lookTarget;
     private Rigidbody rb;
     private Vector3 moveVector;
+    private bool canMove = false;
+    private bool canLook = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         StartCoroutine(MoveCoroutine());
+    }
+
+    public void EnableMovement()
+    {
+        canMove = true;
+    }
+
+    public void EnableLooking()
+    {
+        canLook = true;
     }
 
     private IEnumerator MoveCoroutine()
@@ -38,12 +50,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
+        if (!canMove) return;
         Vector2 move = context.ReadValue<Vector2>();
         moveVector = new Vector3(move.x, moveVector.y, move.y);
     }
 
     public void Look(InputAction.CallbackContext context)
     {
+        if (!canLook) return;
         Vector2 look = context.ReadValue<Vector2>();
         // Debug.Log(look.x + ", " + look.y);
         lookTarget.rotation *= Quaternion.AngleAxis(look.x * lookSpeed, Vector3.up);

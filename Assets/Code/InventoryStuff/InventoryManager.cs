@@ -47,6 +47,7 @@ public class InventoryManager : MonoBehaviour
     public Camera cam;
     public Vector2 mousePosition;
     private bool showingInventory;
+    private bool canUpdate;
 
     void Start()
     {
@@ -59,8 +60,13 @@ public class InventoryManager : MonoBehaviour
 
     void Update()
     {
-        Inventory.Instance.UpdateOrgans();
+        if (canUpdate) Inventory.Instance.UpdateOrgans();
         UpdateAllSlots();
+    }
+
+    public void CutsceneDone()
+    {
+        canUpdate = true;
     }
 
     private IEnumerator TestInventory()

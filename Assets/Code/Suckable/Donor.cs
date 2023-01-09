@@ -30,42 +30,47 @@ public class Donor : MonoBehaviour, ISuckable
     private bool onCooldown = false;
     private bool isDead = false;
     private bool bodyHarvested = false;
+    bool done = false;
 
     private void LateUpdate()
     {
-        if (bodyHarvested)
+        if (bodyHarvested && !done)
         {
-            Destroy(gameObject);
+            done = true;
+            Destroy(transform.parent.gameObject);
         }
     }
-    public Item suck(Transform transform)
+    public Item suck(Transform suckTransform)
     {
         if (!isDead) {
             if (!onCooldown)
             {
                 onCooldown = true;
                 StartCoroutine(StartCooldown());
-                donorController.setTarget(transform);
+                donorController.setTarget(suckTransform);
                 if (organs.Count > 0)
                 {
                     int index = (int)Random.Range(0f, organs.Count);
                     Item item = organs[index];
                     organs.RemoveAt(index);
                     donorController.updateAngerLevel(4 - organs.Count);
-                    if (item is Brain)
+                    if (item is Brain || transform.parent.name == "Garbriel")
                     {
                         hat.SetActive(false);
                         brain.SetActive(false);
-                    } else if (item is Eyes)
+                    }
+                    if (item is Eyes || transform.parent.name == "Garbriel")
                     {
                         eyeOne.SetActive(false);
                         eyeTwo.SetActive(false);
-                    } else if (item is Lungs)
+                    }
+                    if (item is Lungs || transform.parent.name == "Garbriel")
                     {
                         stripe.SetActive(false);
                         lungOne.SetActive(false);
                         lungTwo.SetActive(false);
-                    } else if (item is Heart)
+                    }
+                    if (item is Heart || transform.parent.name == "Garbriel")
                     {
                         stripe.SetActive(false);
                         heart.SetActive(false);

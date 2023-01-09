@@ -21,6 +21,7 @@ public class AnimateWithTransforms : MonoBehaviour
     [SerializeField] private bool onlyIfMoving = false;
     [SerializeField] private UnityEvent onFinish;
     private int currentFrame = 0, direction = 1;
+    private bool canceled;
 
     void Awake()
     {
@@ -34,13 +35,19 @@ public class AnimateWithTransforms : MonoBehaviour
 
     public void StartAnimation()
     {
+        canceled = false;
         StartCoroutine(Animate());
+    }
+
+    public void Cancel()
+    {
+        canceled = true;
     }
 
     private IEnumerator Animate()
     {
         int i = 0;
-        while (goForever || i < cycles)
+        while (!canceled && (goForever || i < cycles))
         {
             yield return MoveThroughTargets();
             if (mode == AnimateMode.BackAndForth) yield return MoveBackwardsThroughTargets();
@@ -53,7 +60,7 @@ public class AnimateWithTransforms : MonoBehaviour
     private IEnumerator MoveThroughTargets()
     {
         direction = 1;
-        for (int i = 0; i < targets.Count - 1; i++)
+        for (int i = 0; i < targets.Count - 1 && !canceled; i++)
         {
             currentFrame = i;
             yield return MoveToNextTarget();
@@ -63,7 +70,7 @@ public class AnimateWithTransforms : MonoBehaviour
     private IEnumerator MoveBackwardsThroughTargets()
     {
         direction = -1;
-        for (int i = targets.Count - 1; i > 0; i--)
+        for (int i = targets.Count - 1; i > 0 && !canceled; i--)
         {
             currentFrame = i;
             yield return MoveToNextTarget();
@@ -75,7 +82,7 @@ public class AnimateWithTransforms : MonoBehaviour
         transform.position = targets[currentFrame].position;
         transform.rotation = targets[currentFrame].rotation;
         float t = 0;
-        while (t < timeBetweenTargets)
+        while (t < timeBetweenTargets && !canceled)
         {
             if (!onlyIfMoving || Moving())
             {

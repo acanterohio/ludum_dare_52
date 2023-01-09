@@ -10,6 +10,7 @@ public class ShootingManager : MonoBehaviour
     [SerializeField] private Transform shootPosition;
     private Transform playerTransform;
     private float boneSpeed = 100f;
+    private bool canShoot;
 
     private void Start()
     {
@@ -19,7 +20,7 @@ public class ShootingManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && canShoot)
         {
             if (Inventory.Instance.ammoCount > 0)
             {
@@ -30,5 +31,10 @@ public class ShootingManager : MonoBehaviour
                 bone.GetComponent<Rigidbody>().velocity = playerTransform.forward * boneSpeed;
             }
         }
+    }
+
+    public void EnableShoot()
+    {
+        canShoot = true;
     }
 }

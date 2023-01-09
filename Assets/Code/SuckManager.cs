@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.AI;
 
 public class SuckManager : MonoBehaviour
@@ -8,16 +9,23 @@ public class SuckManager : MonoBehaviour
     [SerializeField] private GameObject brainPrefab, eyesPrefab, lungsPrefab, heartPrefab;
     [SerializeField] private Transform playerSuckPoint;
     [SerializeField] private float suckRadius;
+    [SerializeField] private UnityEvent firstSuck;
+    private bool canSuck;
+    private bool firstSuckDone;
 
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetMouseButton(1) && canSuck)
         {
-            
+            if (!firstSuckDone)
+            {
+                firstSuck.Invoke();
+                firstSuckDone = true;
+            }
             Collider[] hitColliders = Physics.OverlapSphere(playerSuckPoint.position, suckRadius);
             for (int i = 0; i < hitColliders.Length; i++)
             {
-                ISuckable suckable =  hitColliders[i].gameObject.GetComponent<ISuckable>();
+                ISuckable suckable = hitColliders[i].gameObject.GetComponent<ISuckable>();
                 if (suckable != null )
                 {
                     Item sucked = suckable.suck(transform);
@@ -52,5 +60,10 @@ public class SuckManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void EnableSuck()
+    {
+        canSuck = true;
     }
 }
