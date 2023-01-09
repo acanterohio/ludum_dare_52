@@ -1,0 +1,78 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
+public class DialogueManager : MonoBehaviour
+{
+    [System.Serializable]
+    private class Dialogue
+    {
+        [TextArea(15, 20)]
+        public string text;
+        public bool playAfterPrevious;
+    }
+
+    [SerializeField] private List<Dialogue> dialogues;
+    [SerializeField] private float charactersPerSecond = 10;
+    [SerializeField] private TextMeshProUGUI textMesh;
+    [SerializeField] private GameObject dialogueBox;
+    private int current = -1;
+    private bool playingDialogue;
+    private float t;
+
+    void Start()
+    {
+        if (dialogues.Count > 0 && dialogues[0].playAfterPrevious) TriggerDialogue(0);
+    }
+
+    public void TriggerDialogue(int index)
+    {
+        if (index != current + 1) return;
+        current = index;
+        StartCoroutine(PlayDialogue());
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            OnClick();
+        }
+    }
+
+    private void OnClick()
+    {
+        if (playingDialogue)
+        {
+            playingDialogue = false;
+        }
+        else if (current < dialogues.Count - 1 && dialogues[current + 1].playAfterPrevious)
+        {
+            TriggerDialogue(current + 1);
+        }
+        else
+        {
+            dialogueBox.SetActive(false);
+        }
+    }
+
+    private IEnumerator PlayDialogue()
+    {
+        dialogueBox.SetActive(true);
+        playingDialogue = true;
+        string text = dialogues[current].text;
+        float duration = text.Length / charactersPerSecond;
+        t = 0;
+        while (t < duration)
+        {
+            if (!playingDialogue) break;
+            string sub = text.Substring(0, Mathf.RoundToInt(text.Length * t / duration));
+            textMesh.text = sub;
+            t += Time.deltaTime;
+            yield return null;
+        }
+        textMesh.text = text;
+        playingDialogue = false;
+    }
+}
