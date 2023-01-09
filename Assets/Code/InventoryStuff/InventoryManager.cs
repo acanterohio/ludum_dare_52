@@ -66,6 +66,11 @@ public class InventoryManager : MonoBehaviour
         UpdateAllSlots();
     }
 
+    public Inventory getInventory()
+    {
+        return Inventory.Instance;
+    }
+
     public void CutsceneDone()
     {
         canUpdate = true;

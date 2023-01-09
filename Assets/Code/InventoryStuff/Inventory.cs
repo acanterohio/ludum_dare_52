@@ -194,4 +194,14 @@ public class Inventory
         if (currentHeart != null && currentHeart.Quality <= 0) currentHeart = null;
     }
 
+    public List<Organ> getCurrentOrgans()
+    {
+        List<Organ> organs = new List<Organ>();
+        if (currentBrain != null) organs.Add(currentBrain);
+        if (currentEyes != null) organs.Add(currentEyes);
+        if (currentLungs != null) organs.Add(currentLungs);
+        if (currentHeart != null) organs.Add(currentHeart);
+        return organs;
+    }
+
 }
