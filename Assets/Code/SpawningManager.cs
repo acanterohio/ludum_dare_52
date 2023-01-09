@@ -11,6 +11,7 @@ public class SpawningManager : MonoBehaviour
     int maxSpawned = 20;
     float spawnInterval = 5f;
 
+    [SerializeField] private List<Material> materials = new List<Material>();
     [SerializeField] private GameObject donorPrefab;
    // [SerializeField] private GameObject spawnPrefab;
 
