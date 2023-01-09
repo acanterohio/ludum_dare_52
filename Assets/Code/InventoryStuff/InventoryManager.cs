@@ -50,6 +50,7 @@ public class InventoryManager : MonoBehaviour
         currentOrgans.anchoredPosition = sidebarPos;
         currentOrgans.localScale = sidebarScale;
         // StartCoroutine(TestInventory());
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private IEnumerator TestInventory()
