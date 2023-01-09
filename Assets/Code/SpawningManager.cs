@@ -9,7 +9,9 @@ public class SpawningManager : MonoBehaviour
 
     int numberSpawned = 0;
     int maxSpawned = 20;
-    float spawnInterval = 5f;
+    float spawnInterval = 25f;
+    float health = 25f;
+    float healthIncrement = 9f;
 
     [SerializeField] private List<Material> clothMaterials = new List<Material>();
     [SerializeField] private List<Material> skinMaterials = new List<Material>();
@@ -57,10 +59,12 @@ public class SpawningManager : MonoBehaviour
                     donor.GetComponentInChildren<DonorController>().setDestinations(spawnLocations);
                     donor.GetComponentInChildren<DonorColorController>().setMaterials(skinMaterials[(int)Random.Range(0f, skinMaterials.Count)], clothMaterials[(int)Random.Range(0f, clothMaterials.Count)],
                         clothMaterials[(int)Random.Range(0f, clothMaterials.Count)], clothMaterials[(int)Random.Range(0f, clothMaterials.Count)]); //sets random colors
+                    donor.GetComponentInChildren<DonorHealth>().health = health;
                     numberSpawned++;
                 }
             }
             yield return new WaitForSeconds(spawnInterval);
+            health += healthIncrement;
         }
     }
 }

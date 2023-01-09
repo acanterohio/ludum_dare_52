@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private float lookSpeed;
     [SerializeField] private Transform lookTarget;
+    [SerializeField] private GameObject inventory;
     private Rigidbody rb;
     private Vector3 moveVector;
     private bool canMove = false;
@@ -57,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Look(InputAction.CallbackContext context)
     {
+        if (inventory.activeSelf) return;
         if (!canLook) return;
         Vector2 look = context.ReadValue<Vector2>();
         // Debug.Log(look.x + ", " + look.y);

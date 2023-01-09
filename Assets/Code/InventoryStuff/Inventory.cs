@@ -39,6 +39,11 @@ public class Inventory
         currentLungs = new Lungs { Quality = 1 - Random.value * .1f };
     }
 
+    public void Recreate()
+    {
+        instance = new Inventory();
+    }
+
     public bool AddItem(Item item)
     {
         bool success = false;

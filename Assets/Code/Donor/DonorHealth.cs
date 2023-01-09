@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class DonorHealth : MonoBehaviour, IDamageable
 {
     public Transform shotSounds, hurtSounds;
-    private float health = 25f;
+    public float health = 25f;
     private Donor donor;
     private DonorController donorController;
     public UnityEvent garbrielDead;
