@@ -198,6 +198,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: doorlessbuilding (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d97aa2ec17ececc4ea619016f0d20ff7, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d97aa2ec17ececc4ea619016f0d20ff7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d97aa2ec17ececc4ea619016f0d20ff7, type: 3}
 --- !u!4 &6232056476404373502 stripped
@@ -271,6 +279,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d97aa2ec17ececc4ea619016f0d20ff7, type: 3}
       propertyPath: m_Name
       value: doorlessbuilding
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d97aa2ec17ececc4ea619016f0d20ff7, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d97aa2ec17ececc4ea619016f0d20ff7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d97aa2ec17ececc4ea619016f0d20ff7, type: 3}

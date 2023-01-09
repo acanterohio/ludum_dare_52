@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,6 +13,9 @@ public class DonorController : MonoBehaviour
 
     private List<Vector3> destinations;
 
+    private bool isFrozen = false;
+    private float frozenPeriod = 3f;
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -21,6 +25,11 @@ public class DonorController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (isFrozen)
+        {
+            agent.speed = 0f;
+            return;
+        }
         if (angerLevel == 5)
         {
             Destroy(GetComponent<NavMeshAgent>());
@@ -34,16 +43,16 @@ public class DonorController : MonoBehaviour
             case 0:
                 break;
             case 1:
-                speed = 6f;
+                speed = 7f;
                 break;
             case 2:
-                speed = 8f;
-                break;
-            case 3:
                 speed = 10f;
                 break;
-            case 4:
+            case 3:
                 speed = 12f;
+                break;
+            case 4:
+                speed = 14f;
                 break;
             case 6: //fallen
                 return;
@@ -78,5 +87,31 @@ public class DonorController : MonoBehaviour
     public void setDestinations(List<Vector3> destinations)
     {
         this.destinations = destinations;
+    }
+
+    public void setFrozen()
+    {
+        isFrozen= true;
+        StartCoroutine(StartCooldown());
+
+    }
+
+    private IEnumerator StartCooldown()
+    {
+        yield return new WaitForSeconds(frozenPeriod);
+        isFrozen = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        IHittable hittable = collision.gameObject.GetComponent<IHittable>();
+        if (hittable != null)
+        {
+            if (angerLevel != 0 && angerLevel < 5 && hittable.hit())
+            {
+                print("Player hit");
+                setFrozen();
+            }
+        }
     }
 }
