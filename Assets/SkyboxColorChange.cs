@@ -10,6 +10,6 @@ public class SkyboxColorChange : MonoBehaviour
     public void ChangeColor()
     {
         RenderSettings.skybox.SetColor("_SkyColor", newColor);
-        RenderSettings.
+        // RenderSettings.
     }
 }
