@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1622480173660084457}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Child
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 8588099944585851316}
   - component: {fileID: 8588099944585851307}
   - component: {fileID: -4294802710287741321}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Donor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994f2f1153f3caf4f9d07ec3cb248006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 0}
 --- !u!136 &8588099944585851307
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -153,7 +152,7 @@ GameObject:
   - component: {fileID: 8588099945007730655}
   - component: {fileID: 8588099945007730653}
   - component: {fileID: 8588099945007730652}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DonorBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
