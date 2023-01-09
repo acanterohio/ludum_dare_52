@@ -13,15 +13,17 @@ public class SuckManager : MonoBehaviour
     [SerializeField] private Transform pickUpBones;
     [SerializeField] private Transform takeOrgans;
     [SerializeField] private AudioSource vacStart, vacRunning, vacEnd;
+    [SerializeField] private ParticleSystem suckParticles;
     private bool canSuck;
     private bool firstSuckDone;
     private bool sucking = false;
 
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetMouseButtonDown(1) && canSuck)
         {
             sucking = true;
+            suckParticles.Play();
             vacEnd.Stop();
             vacRunning.Stop();
             vacStart.Play();
@@ -30,6 +32,7 @@ public class SuckManager : MonoBehaviour
         if (Input.GetMouseButtonUp(1) && sucking)
         {
             sucking = false;
+            suckParticles.Stop();
             vacStart.Stop();
             vacRunning.Stop();
             vacEnd.Play();

@@ -15,7 +15,7 @@ public class GroundPoint : MonoBehaviour
     void Start()
     {
         originalLocalPos = transform.localPosition;
-        originalHeight = transform.localPosition.y;
+        originalHeight = -1;
         agent = GetComponentInParent<NavMeshAgent>();
         rb = GetComponentInParent<Rigidbody>();
         StartCoroutine(StayOnGround());
@@ -29,15 +29,15 @@ public class GroundPoint : MonoBehaviour
             Vector3 origin = transform.position;
             origin.y = transform.parent.position.y + originalHeight;
 
-            if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit, maxDistance, 7))
-            {
-                point = hit.point;
-            }
-            else
-            {
+            // if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit, maxDistance, 7))
+            // {
+            //     point = hit.point;
+            // }
+            // else
+            // {
                 point = transform.position;
                 point.y = transform.parent.position.y + originalHeight - maxDistance;
-            }
+            // }
 
             transform.position = point;
 

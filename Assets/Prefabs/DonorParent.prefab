@@ -513,11 +513,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundPoint: {fileID: 8725697738893149026}
-  stepDistance: 0.5
+  stepDistance: 1
   stepHeight: 0.5
   groundedFeet:
   - {fileID: 6639539582123056707}
-  groundedDistance: 0.2
+  groundedDistance: 0.5
   stepTime: 0.15
   stepCurve:
     serializedVersion: 2
@@ -1582,7 +1582,7 @@ MonoBehaviour:
   stepHeight: 0.5
   groundedFeet:
   - {fileID: 3241422332686608886}
-  groundedDistance: 0.4
+  groundedDistance: 0.5
   stepTime: 0.15
   stepCurve:
     serializedVersion: 2
