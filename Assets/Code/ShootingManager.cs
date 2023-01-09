@@ -9,6 +9,7 @@ public class ShootingManager : MonoBehaviour
     [SerializeField] Transform boneParentTransform;
     [SerializeField] private Transform shootPosition;
     [SerializeField] private Transform shootSounds;
+    [SerializeField] private GameObject inventory;
     private Transform playerTransform;
     private float boneSpeed = 100f;
     private bool canShoot;
@@ -21,7 +22,7 @@ public class ShootingManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && canShoot)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && canShoot && !inventory.activeSelf)
         {
             if (Inventory.Instance.ammoCount > 0)
             {

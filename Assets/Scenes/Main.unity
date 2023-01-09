@@ -5637,6 +5637,10 @@ PrefabInstance:
       value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 4958968304059891170, guid: 6dcf083ee15124592ab9a861a6725eb4, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 1021035376}
+    - target: {fileID: 4958968304059891170, guid: 6dcf083ee15124592ab9a861a6725eb4, type: 3}
       propertyPath: bonePrefab
       value: 
       objectReference: {fileID: 1402416795696601076, guid: d968c1d4dcddd7d4fbdf5e0821724be9, type: 3}
