@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Cinemachine;
 
 public class ShootingManager : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class ShootingManager : MonoBehaviour
         {
             if (Inventory.Instance.ammoCount > 0)
             {
+                GetComponent<CinemachineImpulseSource>().GenerateImpulse();
                 shootSounds.GetChild(Random.Range(0, shootSounds.childCount)).GetComponent<AudioSource>().Play();
                 Inventory.Instance.ammoCount--;
                 GameObject bone = Instantiate(bonePrefab, shootPosition.position, Quaternion.identity, boneParentTransform);

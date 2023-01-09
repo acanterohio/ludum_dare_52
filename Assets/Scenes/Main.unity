@@ -5755,7 +5755,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7467258274370680484, guid: 6dcf083ee15124592ab9a861a6725eb4, type: 3}
   m_PrefabInstance: {fileID: 319343861}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 319343865}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf4d338e93ea84cc6a69f4c8b9049380, type: 3}
@@ -5772,6 +5772,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e2b3e8745b444fd8993138c4b044701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &319343864 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7467258273436141840, guid: 6dcf083ee15124592ab9a861a6725eb4, type: 3}
+  m_PrefabInstance: {fileID: 319343861}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &319343865 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7467258274370680482, guid: 6dcf083ee15124592ab9a861a6725eb4, type: 3}
+  m_PrefabInstance: {fileID: 319343861}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &319343866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319343864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ApplyAfter: 2
+  m_ChannelMask: 1
+  m_Gain: 1
+  m_Use2DDistance: 0
+  m_UseCameraSpace: 1
+  m_ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1001 &323358941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8257,7 +8290,7 @@ MonoBehaviour:
   deathTimer: 15
   deathBar: {fileID: 625017922}
   deathBarFill: {fileID: 1905158127}
-  heartBeat: {fileID: 0}
+  heartBeat: {fileID: 1034350136}
   cam: {fileID: 275900215}
   mousePosition: {x: 0, y: 0}
 --- !u!4 &503261144
@@ -31157,7 +31190,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4958968304059891170, guid: 6dcf083ee15124592ab9a861a6725eb4, type: 3}
   m_PrefabInstance: {fileID: 319343861}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 319343865}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a9ecc417210d2d49ab78a4c4348428a, type: 3}
@@ -31168,12 +31201,65 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4520785982837431489, guid: 6dcf083ee15124592ab9a861a6725eb4, type: 3}
   m_PrefabInstance: {fileID: 319343861}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 319343865}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 87ccf4ec15298b04cb29388943ec57da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1929188271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319343865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 1
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.2
+    m_ImpulseType: 0
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: 0, y: -1, z: 0}
 --- !u!1001 &1930884746
 PrefabInstance:
   m_ObjectHideFlags: 0
