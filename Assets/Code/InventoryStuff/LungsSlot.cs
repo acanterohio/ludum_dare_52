@@ -12,6 +12,7 @@ public class LungsSlot : InventorySlot
     public override void UpdateSlot()
     {
         Item item = Inventory.Instance.currentLungs;
+        if (item == null) StartBlinkingRed();
         UpdateSlotWithItem(item);
     }
     

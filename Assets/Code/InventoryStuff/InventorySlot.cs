@@ -10,15 +10,20 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     protected int slot;
     protected bool hovering;
     protected bool dragging;
-    protected bool itemExists;
+    public bool itemExists;
     [SerializeField] protected GameObject highlight;
     [SerializeField] protected Image itemImage;
     [SerializeField] protected GameObject qualityBar;
     [SerializeField] protected Image qualityFill;
+    [SerializeField] public Image background;
+    [SerializeField] public Color redColor = new Color(.8f, 0, 0, .5f);
+    private Color backgroundColor;
     protected InventoryManager manager;
 
     void Awake()
     {
+        if (background == null) background = transform.Find("Background").GetComponent<Image>();
+        backgroundColor = background.color;
         manager = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
         OnStart();
     }
@@ -37,6 +42,35 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         Item item = Inventory.Instance.GetItem(slot);
         UpdateSlotWithItem(item);
     }
+
+
+    public void StartBlinkingRed()
+    {
+        StartCoroutine(BlinkRed());
+    }
+
+    private IEnumerator BlinkRed()
+    {
+        Color startColor = backgroundColor;
+        Color targetColor = redColor;
+        float t = 0;
+        float interval = .5f;
+        while (!itemExists)
+        {
+            background.color = Color.Lerp(startColor, targetColor, t / interval);
+            t += Time.deltaTime;
+            if (t >= interval)
+            {
+                Color temp = targetColor;
+                targetColor = startColor;
+                startColor = temp;
+                t = 0;
+            }
+            yield return null;
+        }
+        background.color = backgroundColor;
+    }
+
 
     protected virtual void UpdateSlotWithItem(Item item)
     {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -40,6 +41,9 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private Vector3 sidebarScale, sidebarInvScale;
     [SerializeField] private Phone phone;
     [SerializeField] private GameObject phoneParent;
+    [SerializeField] private float deathTimer = 15f;
+    [SerializeField] private GameObject deathBar;
+    [SerializeField] private Image deathBarFill;
     public Camera cam;
     public Vector2 mousePosition;
     private bool showingInventory;
@@ -51,6 +55,12 @@ public class InventoryManager : MonoBehaviour
         currentOrgans.localScale = sidebarScale;
         // StartCoroutine(TestInventory());
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    void Update()
+    {
+        Inventory.Instance.UpdateOrgans();
+        UpdateAllSlots();
     }
 
     private IEnumerator TestInventory()
@@ -187,6 +197,48 @@ public class InventoryManager : MonoBehaviour
         foreach (InventorySlot organSlot in organSlots)
         {
             organSlot.UpdateSlot();
+            if (!organSlot.itemExists)
+            {
+                if (!deathTimerRunning) StartCoroutine(DeathTimer());
+            }
         }
+    }
+
+    private bool deathTimerRunning = false;
+    private IEnumerator DeathTimer()
+    {
+        deathTimerRunning = true;
+        float t = deathTimer;
+        deathBar.SetActive(true);
+        while (MissingOrgans().Count > 0)
+        {
+            deathBarFill.fillAmount = t / deathTimer;
+            if (t <= 0)
+            {
+                Death();
+            }
+            t -= Time.deltaTime;
+            yield return null;
+        }
+        deathBar.SetActive(false);
+        deathTimerRunning = false;
+    }
+
+    private void Death()
+    {
+
+    }
+
+    private List<Image> MissingOrgans()
+    {
+        List<Image> list = new List<Image>();
+        foreach (InventorySlot organSlot in organSlots)
+        {
+            if (!organSlot.itemExists)
+            {
+                list.Add(organSlot.background);
+            }
+        }
+        return list;
     }
 }
