@@ -8,6 +8,7 @@ public class Phone : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private bool hovering;
     [SerializeField] private TextMeshProUGUI phoneText, cornerText;
+    [SerializeField] private AudioSource sellSound;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -24,6 +25,7 @@ public class Phone : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         if (hovering)
         {
             Inventory.Instance.SellItem(slot);
+            sellSound.Play();
             UpdateCashText();
         }
     }

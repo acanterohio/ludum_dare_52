@@ -121,8 +121,9 @@ public class Inventory
     {
         if (inventoryItems[slot] is Brain brain)
         {
-            inventoryItems[slot] = currentBrain;
-            currentBrain = brain;
+            if (currentBrain == null) currentBrain = brain;
+            else currentBrain.Quality += inventoryItems[slot].Quality;
+            inventoryItems[slot] = null;
         }
         else if (inventoryItems[slot] == null)
         {
@@ -135,8 +136,9 @@ public class Inventory
     {
         if (inventoryItems[slot] is Eyes eyes)
         {
-            inventoryItems[slot] = currentEyes;
-            currentEyes = eyes;
+            if (currentEyes == null) currentEyes = eyes;
+            else currentEyes.Quality += inventoryItems[slot].Quality;
+            inventoryItems[slot] = null;
         }
         else if (inventoryItems[slot] == null)
         {
@@ -149,8 +151,9 @@ public class Inventory
     {
         if (inventoryItems[slot] is Lungs lungs)
         {
-            inventoryItems[slot] = currentLungs;
-            currentLungs = lungs;
+            if (currentLungs == null) currentLungs = lungs;
+            else currentLungs.Quality += inventoryItems[slot].Quality;
+            inventoryItems[slot] = null;
         }
         else if (inventoryItems[slot] == null)
         {
@@ -163,8 +166,9 @@ public class Inventory
     {
         if (inventoryItems[slot] is Heart heart)
         {
-            inventoryItems[slot] = currentHeart;
-            currentHeart = heart;
+            if (currentHeart == null) currentHeart = heart;
+            else currentHeart.Quality += inventoryItems[slot].Quality;
+            inventoryItems[slot] = null;
         }
         else if (inventoryItems[slot] == null)
         {

@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class DonorHealth : MonoBehaviour, IDamageable
 {
+    public Transform shotSounds, hurtSounds;
     private float health = 25f;
     private Donor donor;
     private DonorController donorController;
@@ -22,6 +23,8 @@ public class DonorHealth : MonoBehaviour, IDamageable
         {
             if (ps.gameObject.name == "BloodSpurt") ps.Play();
         }
+        shotSounds.GetChild(Random.Range(0, shotSounds.childCount)).GetComponent<AudioSource>().Play();
+        hurtSounds.GetChild(Random.Range(0, hurtSounds.childCount)).GetComponent<AudioSource>().Play();
         health -= damage;
         if (health <= 0 && !dead)
         {

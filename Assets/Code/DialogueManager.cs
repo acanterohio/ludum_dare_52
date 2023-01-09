@@ -73,6 +73,7 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator PlayDialogue()
     {
+        transform.Find("Garbriel").Find("TalkingSound").GetComponent<AudioSource>().Play();
         dialogueBox.SetActive(true);
         playingDialogue = true;
         string text = dialogues[current].text;

@@ -10,11 +10,30 @@ public class SuckManager : MonoBehaviour
     [SerializeField] private Transform playerSuckPoint;
     [SerializeField] private float suckRadius;
     [SerializeField] private UnityEvent firstSuck;
+    [SerializeField] private Transform pickUpBones;
+    [SerializeField] private Transform takeOrgans;
+    [SerializeField] private AudioSource vacStart, vacRunning, vacEnd;
     private bool canSuck;
     private bool firstSuckDone;
+    private bool sucking = false;
 
     void FixedUpdate()
     {
+        if (Input.GetMouseButtonDown(1) && canSuck)
+        {
+            sucking = true;
+            vacEnd.Stop();
+            vacRunning.Stop();
+            vacStart.Play();
+            StartCoroutine(SuckSounds());
+        }
+        if (Input.GetMouseButtonUp(1) && sucking)
+        {
+            sucking = false;
+            vacStart.Stop();
+            vacRunning.Stop();
+            vacEnd.Play();
+        }
         if (Input.GetMouseButton(1) && canSuck)
         {
             if (!firstSuckDone)
@@ -31,10 +50,12 @@ public class SuckManager : MonoBehaviour
                     Item sucked = suckable.suck(transform);
                     if (sucked is NormalAmmo ammo)
                     {
+                        pickUpBones.GetChild(Random.Range(0, pickUpBones.childCount)).GetComponent<AudioSource>().Play();
                         print("Found some ammo!");
                     }
                     if (sucked is Organ organ)
                     {
+                        takeOrgans.GetChild(Random.Range(0, takeOrgans.childCount)).GetComponent<AudioSource>().Play();
                         print("Congrats you got: " + sucked.GetType().Name);
                         GameObject prefab;
                         if (organ is Brain) prefab = brainPrefab;
@@ -65,5 +86,18 @@ public class SuckManager : MonoBehaviour
     public void EnableSuck()
     {
         canSuck = true;
+    }
+
+    private IEnumerator SuckSounds()
+    {
+        while (vacStart.isPlaying && sucking)
+        {
+            yield return null;
+        }
+        while (sucking)
+        {
+            if (!vacRunning.isPlaying) vacRunning.Play();
+            yield return null;
+        }
     }
 }

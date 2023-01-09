@@ -18,6 +18,7 @@ public class CutsceneManager : MonoBehaviour
 
     void Start()
     {
+        GameObject.Find("SoundManager").GetComponent<MusicManager>().PlayIntro();
         if (events.Count > 0) events[0].start.Invoke();
     }
 

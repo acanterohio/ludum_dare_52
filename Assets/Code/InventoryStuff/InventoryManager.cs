@@ -44,6 +44,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private float deathTimer = 15f;
     [SerializeField] private GameObject deathBar;
     [SerializeField] private Image deathBarFill;
+    [SerializeField] private AudioSource heartBeat;
     public Camera cam;
     public Vector2 mousePosition;
     private bool showingInventory;
@@ -216,9 +217,11 @@ public class InventoryManager : MonoBehaviour
         deathTimerRunning = true;
         float t = deathTimer;
         deathBar.SetActive(true);
+        heartBeat.Play();
         while (MissingOrgans().Count > 0)
         {
             deathBarFill.fillAmount = t / deathTimer;
+            if (heartBeat.isPlaying) heartBeat.Play();
             if (t <= 0)
             {
                 Death();
