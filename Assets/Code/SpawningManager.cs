@@ -11,7 +11,8 @@ public class SpawningManager : MonoBehaviour
     int maxSpawned = 20;
     float spawnInterval = 5f;
 
-    [SerializeField] private List<Material> materials = new List<Material>();
+    [SerializeField] private List<Material> clothMaterials = new List<Material>();
+    [SerializeField] private List<Material> skinMaterials = new List<Material>();
     [SerializeField] private GameObject donorPrefab;
    // [SerializeField] private GameObject spawnPrefab;
 
@@ -50,6 +51,8 @@ public class SpawningManager : MonoBehaviour
                 {
                     GameObject donor = Instantiate(donorPrefab, location, Quaternion.identity, transform.GetChild(1));
                     donor.GetComponentInChildren<DonorController>().setDestinations(spawnLocations);
+                    donor.GetComponentInChildren<DonorColorController>().setMaterials(skinMaterials[(int)Random.Range(0f, skinMaterials.Count)], clothMaterials[(int)Random.Range(0f, clothMaterials.Count)],
+                        clothMaterials[(int)Random.Range(0f, clothMaterials.Count)], clothMaterials[(int)Random.Range(0f, clothMaterials.Count)]); //sets random colors
                     numberSpawned++;
                 }
             }
