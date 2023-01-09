@@ -8,4 +8,9 @@ public class Brain : Organ
     {
 
     }
+
+    public Brain(float modifier) : base(modifier)
+    {
+
+    }
 }

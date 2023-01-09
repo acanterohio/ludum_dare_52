@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Donor : MonoBehaviour, ISuckable
@@ -26,7 +27,7 @@ public class Donor : MonoBehaviour, ISuckable
         donorController = GetComponent<DonorController>();
     }
 
-    private float suckCooldown = 3f;
+    private float suckCooldown = 7f;
     private bool onCooldown = false;
     private bool isDead = false;
     private bool bodyHarvested = false;
@@ -52,6 +53,10 @@ public class Donor : MonoBehaviour, ISuckable
                 {
                     int index = (int)Random.Range(0f, organs.Count);
                     Item item = organs[index];
+                    if (item is Organ organ)
+                    {
+                        organ.Quality = Mathf.Clamp(organ.Quality * 1.5f / organs.Count, 0f, 1f);
+                    }
                     organs.RemoveAt(index);
                     donorController.updateAngerLevel(4 - organs.Count);
                     if (item is Brain || transform.parent.name == "Garbriel")

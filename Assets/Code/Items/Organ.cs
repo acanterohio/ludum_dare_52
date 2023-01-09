@@ -29,7 +29,14 @@ public abstract class Organ : Item
     public Organ()
     {
         quality = Random.value;
+        
     }
+
+    public Organ(float qualityModifier)
+    {
+        quality = Random.value * qualityModifier;
+    }
+
 
     public void Update(float mult = 1f)
     {

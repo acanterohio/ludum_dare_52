@@ -36,23 +36,23 @@ public class DonorController : MonoBehaviour
             donorTransform.rotation = Quaternion.Euler(90, 0, 0);
             angerLevel = 6;
         }
-        float speed = 8f;
+        float speed = 12f;
         switch (angerLevel)
         {
 
             case 0:
                 break;
             case 1:
-                speed = 7f;
+                speed = 14f;
                 break;
             case 2:
-                speed = 10f;
+                speed = 15f;
                 break;
             case 3:
-                speed = 12f;
+                speed = 20f;
                 break;
             case 4:
-                speed = 14f;
+                speed = 25f;
                 break;
             case 6: //fallen
                 return;

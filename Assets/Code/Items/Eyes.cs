@@ -8,4 +8,9 @@ public class Eyes : Organ
     {
 
     }
+    public Eyes(float modifier) : base(modifier)
+    {
+
+    }
+
 }

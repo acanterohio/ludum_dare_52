@@ -8,4 +8,8 @@ public class Heart : Organ
     {
 
     }
+    public Heart(float modifier) : base(modifier)
+    {
+
+    }
 }

@@ -2064,6 +2064,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6490971637543572917, guid: 959fd101cca1716449b8f965b61d3bdd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 67.57997
+      objectReference: {fileID: 0}
+    - target: {fileID: -6490971637543572917, guid: 959fd101cca1716449b8f965b61d3bdd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 60.048134
+      objectReference: {fileID: 0}
+    - target: {fileID: -6490971637543572917, guid: 959fd101cca1716449b8f965b61d3bdd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 92.696
+      objectReference: {fileID: 0}
+    - target: {fileID: -6490971637543572917, guid: 959fd101cca1716449b8f965b61d3bdd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.7534
+      objectReference: {fileID: 0}
+    - target: {fileID: -6490971637543572917, guid: 959fd101cca1716449b8f965b61d3bdd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.1799
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 959fd101cca1716449b8f965b61d3bdd, type: 3}
       propertyPath: m_Name
       value: vac
@@ -2218,6 +2238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5414ebcedac725d449bdcb48db692077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryManager: {fileID: 0}
+  test: 0
 --- !u!4 &7467258274370680485 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3927025564083796822, guid: 063fa8ba99fee49f3a7d451444e318f7, type: 3}
