@@ -1412,6 +1412,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6130116011573877718}
     - target: {fileID: -1196952814237691598, guid: 063fa8ba99fee49f3a7d451444e318f7, type: 3}
+      propertyPath: bonePrefab
+      value: 
+      objectReference: {fileID: 8726851035039320383, guid: fa7e2781de6e9624bb2d6520c7bc48c3, type: 3}
+    - target: {fileID: -1196952814237691598, guid: 063fa8ba99fee49f3a7d451444e318f7, type: 3}
       propertyPath: eyesPrefab
       value: 
       objectReference: {fileID: 7217839006840102359, guid: bd5fe1571874843b0a0d5dbb2e30f885, type: 3}

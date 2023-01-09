@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class SuckManager : MonoBehaviour
 {
-    [SerializeField] private GameObject brainPrefab, eyesPrefab, lungsPrefab, heartPrefab;
+    [SerializeField] private GameObject brainPrefab, eyesPrefab, lungsPrefab, heartPrefab, bonePrefab;
     [SerializeField] private Transform playerSuckPoint;
     [SerializeField] private float suckRadius;
     [SerializeField] private UnityEvent firstSuck;
@@ -31,7 +31,13 @@ public class SuckManager : MonoBehaviour
                     Item sucked = suckable.suck(transform);
                     if (sucked is NormalAmmo ammo)
                     {
-                        print("Found some ammo!");
+                        GameObject prefab = bonePrefab;
+                        GameObject instance = Instantiate(prefab, hitColliders[i].transform.position, hitColliders[i].transform.rotation);
+                        playerSuckPoint.rotation = Random.rotation;
+                        instance.GetComponent<AnimateWithTransforms>().SetTargets(new List<Transform>() { instance.transform, playerSuckPoint });
+                        instance.GetComponent<AnimateWithTransforms>().StartAnimation();
+                        NavMeshAgent agent = hitColliders[i].GetComponentInChildren<NavMeshAgent>();
+                        if (agent != null) agent.velocity = Vector3.zero;
                     }
                     if (sucked is Organ organ)
                     {
@@ -42,6 +48,7 @@ public class SuckManager : MonoBehaviour
                         else if (organ is Heart) prefab = heartPrefab;
                         else prefab = lungsPrefab;
                         GameObject instance = Instantiate(prefab, hitColliders[i].transform.position, hitColliders[i].transform.rotation);
+                        playerSuckPoint.rotation = Random.rotation;
                         instance.GetComponent<AnimateWithTransforms>().SetTargets(new List<Transform>() { instance.transform, playerSuckPoint });
                         instance.GetComponent<AnimateWithTransforms>().StartAnimation();
                         foreach (ParticleSystem ps in hitColliders[i].GetComponentsInChildren<ParticleSystem>())
