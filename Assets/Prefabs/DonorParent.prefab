@@ -190,7 +190,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73e61524125a142ca98f33ff498e4361, type: 2}
+  - {fileID: 2100000, guid: 493de405f7f7ee8479022265c6be8196, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -382,7 +382,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2732743373316842239}
-  - {fileID: 6784246772719942656}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1089,13 +1088,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4342357404432654301}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 35394770517965992}
-  m_Father: {fileID: 3959000709329612500}
-  m_RootOrder: 1
+  m_Father: {fileID: 2732743373316842239}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4436966932763259593
 GameObject:
@@ -1578,11 +1577,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundPoint: {fileID: 6150749943607158720}
-  stepDistance: 0.5
+  stepDistance: 1
   stepHeight: 0.5
   groundedFeet:
   - {fileID: 3241422332686608886}
-  groundedDistance: 0.2
+  groundedDistance: 0.4
   stepTime: 0.15
   stepCurve:
     serializedVersion: 2
@@ -7015,7 +7014,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 79edcb2f5ddf44eb983fd348e19b6637, type: 2}
+  - {fileID: 2100000, guid: 493de405f7f7ee8479022265c6be8196, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7131,7 +7130,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 79edcb2f5ddf44eb983fd348e19b6637, type: 2}
+  - {fileID: 2100000, guid: 493de405f7f7ee8479022265c6be8196, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7215,7 +7214,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73e61524125a142ca98f33ff498e4361, type: 2}
+  - {fileID: 2100000, guid: 493de405f7f7ee8479022265c6be8196, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7666,6 +7665,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8588099944585851319, guid: 273f140fb6d3fb046a01d0cfc35a61f3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588099944585851319, guid: 273f140fb6d3fb046a01d0cfc35a61f3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588099944585851319, guid: 273f140fb6d3fb046a01d0cfc35a61f3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588099944585851319, guid: 273f140fb6d3fb046a01d0cfc35a61f3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -7739,6 +7750,10 @@ MonoBehaviour:
   hat: {fileID: 2783534828370244699}
   person: {fileID: 3973948483971145995}
   stripe: {fileID: 2270860748029613824}
+  hand1: {fileID: 5295976573821076023}
+  hand2: {fileID: 8926687743980953333}
+  foot1: {fileID: 6181529115932243261}
+  foot2: {fileID: 8157343058812080001}
 --- !u!4 &2732743373316842239 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8588099944585851319, guid: 273f140fb6d3fb046a01d0cfc35a61f3, type: 3}

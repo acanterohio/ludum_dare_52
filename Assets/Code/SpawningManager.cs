@@ -17,7 +17,7 @@ public class SpawningManager : MonoBehaviour
    // [SerializeField] private GameObject spawnPrefab;
 
     List<Vector3> spawnLocations = new List<Vector3>();
-    Vector3 spawnCheck = new Vector3(25, 25, 25);
+    Vector3 spawnCheck = new Vector3(100, 100, 100);
     LayerMask mask;
     // Start is called before the first frame update
     void Start()

@@ -129,9 +129,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 263458674931344787, guid: 91d0b8586e79dc2469f692d2dbe57681, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 263458674931344787, guid: 91d0b8586e79dc2469f692d2dbe57681, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 91d0b8586e79dc2469f692d2dbe57681, type: 3}
       propertyPath: m_Name
       value: car
+      objectReference: {fileID: 0}
+    - target: {fileID: 3461524970777590456, guid: 91d0b8586e79dc2469f692d2dbe57681, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3461524970777590456, guid: 91d0b8586e79dc2469f692d2dbe57681, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3616032231417832517, guid: 91d0b8586e79dc2469f692d2dbe57681, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3616032231417832517, guid: 91d0b8586e79dc2469f692d2dbe57681, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91d0b8586e79dc2469f692d2dbe57681, type: 3}

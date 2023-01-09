@@ -5,10 +5,24 @@ using UnityEngine;
 public class Trash : MonoBehaviour, ISuckable
 {
     private int itemsLeft = 3;
-    private float suckCooldown = .3f;
+    private float suckCooldown = 3f;
     private bool onCooldown = false;
+
+    [SerializeField] private GameObject trashBagOne;
+    [SerializeField] private GameObject trashBagTwo;
+    [SerializeField] private GameObject trashBagThree;
+
+    private bool cycleStarted = false;
+    private float restoreRate = 60f;
+
+
     public Item suck(Transform transform)
     {
+        if (!cycleStarted)
+        {
+            StartCoroutine(TrashCycle());
+            cycleStarted = true;
+        }
         if (!onCooldown)
         {
             onCooldown = true;
@@ -16,6 +30,7 @@ public class Trash : MonoBehaviour, ISuckable
             if (itemsLeft > 0)
             {
                 itemsLeft--;
+                setTrashCount(itemsLeft);
                 int rng = Random.Range(0, 40);
                 switch (rng)
                 {
@@ -42,5 +57,46 @@ public class Trash : MonoBehaviour, ISuckable
     {
         yield return new WaitForSeconds(suckCooldown);
         onCooldown = false;
+    }
+
+    private IEnumerator TrashCycle()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(restoreRate);
+            if (itemsLeft < 3)
+            {
+                itemsLeft++;
+                setTrashCount(itemsLeft);
+            }
+        }
+        
+    }
+
+    private void setTrashCount(int trashLeft)
+    {
+        switch (itemsLeft)
+        {
+            case 3:
+                trashBagOne.SetActive(true);
+                trashBagTwo.SetActive(true);
+                trashBagThree.SetActive(true);
+                break;
+            case 2:
+                trashBagOne.SetActive(false);
+                trashBagTwo.SetActive(true);
+                trashBagThree.SetActive(true);
+                break;
+            case 1:
+                trashBagOne.SetActive(false);
+                trashBagTwo.SetActive(false);
+                trashBagThree.SetActive(true);
+                break;
+            case 0:
+                trashBagOne.SetActive(false);
+                trashBagTwo.SetActive(false);
+                trashBagThree.SetActive(false);
+                break;
+        }
     }
 }
