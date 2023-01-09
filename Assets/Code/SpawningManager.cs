@@ -51,8 +51,8 @@ public class SpawningManager : MonoBehaviour
                 {
                     GameObject donor = Instantiate(donorPrefab, location, Quaternion.identity, transform.GetChild(1));
                     donor.GetComponentInChildren<DonorController>().setDestinations(spawnLocations);
-                    // donor.GetComponentInChildren<DonorColorController>().setMaterials(skinMaterials[(int)Random.Range(0f, skinMaterials.Count)], clothMaterials[(int)Random.Range(0f, clothMaterials.Count)],
-                    //     clothMaterials[(int)Random.Range(0f, clothMaterials.Count)], clothMaterials[(int)Random.Range(0f, clothMaterials.Count)]); //sets random colors
+                    donor.GetComponentInChildren<DonorColorController>().setMaterials(skinMaterials[(int)Random.Range(0f, skinMaterials.Count)], clothMaterials[(int)Random.Range(0f, clothMaterials.Count)],
+                        clothMaterials[(int)Random.Range(0f, clothMaterials.Count)], clothMaterials[(int)Random.Range(0f, clothMaterials.Count)]); //sets random colors
                     numberSpawned++;
                 }
             }
