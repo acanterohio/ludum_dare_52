@@ -14,7 +14,7 @@ public abstract class Organ : Item
         }
         set
         {
-            quality = value;
+            quality = Mathf.Clamp(value, 0f, 1f);
         }
     }
     private float originalValue = 100;

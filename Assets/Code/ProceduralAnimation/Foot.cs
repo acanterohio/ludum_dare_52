@@ -47,6 +47,8 @@ public class Foot : MonoBehaviour
         }
         transform.position = newPosition;
         stepping = false;
+        var sources = GetComponentsInChildren<AudioSource>();
+        if (sources.Length > 0) sources[Random.Range(0, sources.Length)].Play();
     }
 
     private bool ReadyToStep()

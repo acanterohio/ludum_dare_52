@@ -11,5 +11,6 @@ public class ReplaceSprite : MonoBehaviour
     public void Replace()
     {
         image.sprite = newSprite;
+        GameObject.Find("SoundManager").GetComponent<MusicManager>().PlayGameTheme();
     }
 }
