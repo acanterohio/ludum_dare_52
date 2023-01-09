@@ -8257,7 +8257,7 @@ MonoBehaviour:
   deathTimer: 15
   deathBar: {fileID: 625017922}
   deathBarFill: {fileID: 1905158127}
-  heartBeat: {fileID: 0}
+  heartBeat: {fileID: 1034350136}
   cam: {fileID: 275900215}
   mousePosition: {x: 0, y: 0}
 --- !u!4 &503261144

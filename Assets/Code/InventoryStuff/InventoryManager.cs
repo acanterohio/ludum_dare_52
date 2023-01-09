@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -235,7 +236,9 @@ public class InventoryManager : MonoBehaviour
 
     private void Death()
     {
-
+        PlayerPrefs.SetFloat("Score", Inventory.Instance.Cash);
+        PlayerPrefs.SetFloat("HighScore", Mathf.Max(Inventory.Instance.Cash, PlayerPrefs.GetFloat("HighScore")));
+        SceneManager.LoadScene("EndScreen");
     }
 
     private List<Image> MissingOrgans()
