@@ -12,6 +12,7 @@ public class EyesSlot : InventorySlot
     public override void UpdateSlot()
     {
         Item item = Inventory.Instance.currentEyes;
+        if (item == null) StartBlinkingRed();
         UpdateSlotWithItem(item);
     }
     

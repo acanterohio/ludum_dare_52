@@ -31,7 +31,13 @@ public class Inventory
         }
     }
 
-    private Inventory() {}
+    private Inventory()
+    {
+        currentBrain = new Brain { Quality = 1 - Random.value * .1f };
+        currentEyes = new Eyes { Quality = 1 - Random.value * .1f };
+        currentHeart = new Heart { Quality = 1 - Random.value * .1f };
+        currentLungs = new Lungs { Quality = 1 - Random.value * .1f };
+    }
 
     public bool AddItem(Item item)
     {
@@ -84,6 +90,7 @@ public class Inventory
 
     public void SellItem(int slot)
     {
+        if (inventoryItems[slot] == null) return;
         cash += inventoryItems[slot].Value;
         inventoryItems[slot] = null;
     }
@@ -164,6 +171,23 @@ public class Inventory
             inventoryItems[slot] = currentHeart;
             currentHeart = null;
         }
+    }
+
+    public void UpdateOrgans()
+    {
+        for (int i = 0; i < inventoryItems.Length; i++)
+        {
+            inventoryItems[i]?.Update(.5f);
+            if (inventoryItems[i] != null && inventoryItems[i].Quality <= 0) inventoryItems[i] = null;
+        }
+        currentBrain?.Update();
+        if (currentBrain != null && currentBrain.Quality <= 0) currentBrain = null;
+        currentEyes?.Update();
+        if (currentEyes != null && currentEyes.Quality <= 0) currentEyes = null;
+        currentLungs?.Update();
+        if (currentLungs != null && currentLungs.Quality <= 0) currentLungs = null;
+        currentHeart?.Update();
+        if (currentHeart != null && currentHeart.Quality <= 0) currentHeart = null;
     }
 
 }

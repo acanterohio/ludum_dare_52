@@ -1411,6 +1411,26 @@ PrefabInstance:
       propertyPath: shootPosition
       value: 
       objectReference: {fileID: 6130116011573877718}
+    - target: {fileID: -1196952814237691598, guid: 063fa8ba99fee49f3a7d451444e318f7, type: 3}
+      propertyPath: eyesPrefab
+      value: 
+      objectReference: {fileID: 7217839006840102359, guid: bd5fe1571874843b0a0d5dbb2e30f885, type: 3}
+    - target: {fileID: -1196952814237691598, guid: 063fa8ba99fee49f3a7d451444e318f7, type: 3}
+      propertyPath: brainPrefab
+      value: 
+      objectReference: {fileID: 2471315701365007118, guid: 06acad69f33024b0fbc292d9f91d2140, type: 3}
+    - target: {fileID: -1196952814237691598, guid: 063fa8ba99fee49f3a7d451444e318f7, type: 3}
+      propertyPath: heartPrefab
+      value: 
+      objectReference: {fileID: 7414820413301846539, guid: ffd1a20b9f8084966938a3bf65ad4ef8, type: 3}
+    - target: {fileID: -1196952814237691598, guid: 063fa8ba99fee49f3a7d451444e318f7, type: 3}
+      propertyPath: lungsPrefab
+      value: 
+      objectReference: {fileID: 5040202908499493564, guid: 34f4d706d301e48ea974084f8b809d29, type: 3}
+    - target: {fileID: -1196952814237691598, guid: 063fa8ba99fee49f3a7d451444e318f7, type: 3}
+      propertyPath: playerSuckPoint
+      value: 
+      objectReference: {fileID: 7467258274370680485}
     - target: {fileID: 3927025563220023415, guid: 063fa8ba99fee49f3a7d451444e318f7, type: 3}
       propertyPath: CameraSide
       value: 0.5

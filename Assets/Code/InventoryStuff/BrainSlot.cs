@@ -12,6 +12,7 @@ public class BrainSlot : InventorySlot
     public override void UpdateSlot()
     {
         Item item = Inventory.Instance.currentBrain;
+        if (item == null) StartBlinkingRed();
         UpdateSlotWithItem(item);
     }
     

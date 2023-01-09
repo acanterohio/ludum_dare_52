@@ -12,6 +12,7 @@ public class HeartSlot : InventorySlot
     public override void UpdateSlot()
     {
         Item item = Inventory.Instance.currentHeart;
+        if (item == null) StartBlinkingRed();
         UpdateSlotWithItem(item);
     }
     

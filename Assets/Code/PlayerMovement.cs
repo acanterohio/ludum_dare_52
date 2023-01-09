@@ -50,13 +50,13 @@ public class PlayerMovement : MonoBehaviour
         lookTarget.rotation *= Quaternion.AngleAxis(-look.y * lookSpeed, Vector3.right);
         var angles = lookTarget.localEulerAngles;
         var angle = angles.x;
-        if (angle > 180 && angle < 340)
+        if (angle > 180 && angle < 320)
         {
-            angles.x = 340;
+            angles.x = 320;
         }
-        else if (angle < 180 && angle > 40)
+        else if (angle < 180 && angle > 30)
         {
-            angles.x = 40;
+            angles.x = 30;
         }
 
         lookTarget.transform.localEulerAngles = angles;
