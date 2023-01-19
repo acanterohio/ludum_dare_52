@@ -13,15 +13,15 @@ public class DamageManager : MonoBehaviour, IHittable
     {
         if (isHittable)
         {
-            List<Organ> organs = inventoryManager.getInventory().getCurrentOrgans();
-            if (organs != null)
-            {
-                int random = (int)Random.Range(0f, organs.Count);
-                organs[random].Quality -= .3f;
-            }
-            isHittable = false;
-            StartCoroutine(StartCooldown());
-            return true;
+            // List<Organ> organs = inventoryManager.getInventory().getCurrentOrgans();
+            // if (organs != null)
+            // {
+            //     int random = (int)Random.Range(0f, organs.Count);
+            //     organs[random].Quality -= .05f;
+            // }
+            // isHittable = false;
+            // StartCoroutine(StartCooldown());
+            // return true;
         }
         return false;
     }

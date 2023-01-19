@@ -55,7 +55,7 @@ public class Donor : MonoBehaviour, ISuckable
                     Item item = organs[index];
                     if (item is Organ organ)
                     {
-                        organ.Quality = Mathf.Clamp(organ.Quality * 1.5f / organs.Count, 0f, 1f);
+                        // organ.Quality = Mathf.Clamp(organ.Quality * 1.5f / organs.Count, 0f, 1f);
                     }
                     organs.RemoveAt(index);
                     donorController.updateAngerLevel(4 - organs.Count);

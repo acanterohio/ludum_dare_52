@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Organ : Item
 {
-    private float decayRate = 1f / 60f;
+    private float decayRate = 1f / 120f;
     private float quality;
     public float Quality
     {
@@ -28,13 +28,14 @@ public abstract class Organ : Item
 
     public Organ()
     {
-        quality = Random.value;
+        quality = .1f + .9f * Random.value;
         
     }
 
     public Organ(float qualityModifier)
     {
-        quality = Random.value * qualityModifier;
+        quality = .1f + .9f * Random.value;
+        // quality = Random.value * qualityModifier;
     }
 
 
