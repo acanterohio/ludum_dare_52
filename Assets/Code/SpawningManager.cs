@@ -8,10 +8,10 @@ public class SpawningManager : MonoBehaviour
 {
 
     int numberSpawned = 0;
-    int maxSpawned = 20;
+    int maxSpawned = 25;
     float spawnInterval = 25f;
     float health = 25f;
-    float healthIncrement = 9f;
+    float healthIncrement = 3f;
 
     [SerializeField] private List<Material> clothMaterials = new List<Material>();
     [SerializeField] private List<Material> skinMaterials = new List<Material>();

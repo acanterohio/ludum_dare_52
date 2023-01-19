@@ -27,7 +27,7 @@ public class Donor : MonoBehaviour, ISuckable
         donorController = GetComponent<DonorController>();
     }
 
-    private float suckCooldown = 7f;
+    private float suckCooldown = 3f;
     private bool onCooldown = false;
     private bool isDead = false;
     private bool bodyHarvested = false;
